@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Logback more appenders by sndyuk</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Logback more appenders</h1>
+        <h2>Logback fluentd DynamoDB</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/sndyuk/logback-more-appenders/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/sndyuk/logback-more-appenders/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/sndyuk/logback-more-appenders" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>Logback more appenders</h1>
+
+<p>is appenders for <a href="http://logback.qos.ch/">Logback</a>.
+You can logging to DynamoDB, Fluentd and more with the logback appender.</p>
+
+<h2>Appenders</h2>
+
+<ul>
+<li>
+<p><a href="http://fluentd.org/">fluentd</a> </p>
+
+<ul>
+<li>depend on <a href="https://github.com/fluent/fluent-logger-java">fluent-logger for Java</a>.<br><ul>
+<li>Install fluentd before running logger.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://aws.amazon.com/jp/dynamodb/">Amazon DynamoDB</a>  </p>
+
+<ul>
+<li>depend on <a href="http://aws.amazon.com/jp/sdkforjava/">aws-java-sdk</a>.</li>
+<li>Create Amazon DynamoDB Table</li>
+</ul>
+</li>
+</ul><h2>Installing</h2>
+
+<h3>Install jars from Maven2 repository</h3>
+
+<p>Configure your pom.xml:</p>
+
+<pre><code>&lt;dependencies&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+    &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+    &lt;version&gt;${logback.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- If you use fluentd appender --&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.fluentd&lt;/groupId&gt;
+    &lt;artifactId&gt;fluent-logger&lt;/artifactId&gt;
+    &lt;version&gt;${fluentd.logger.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- If you use Amazon DynamoDB appender --&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.amazonaws&lt;/groupId&gt;
+    &lt;artifactId&gt;aws-java-sdk&lt;/artifactId&gt;
+    &lt;version&gt;${aws.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.sndyuk&lt;/groupId&gt;
+    &lt;artifactId&gt;logback-more-appenders&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+
+&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;com.sndyuk&lt;/id&gt;
+    &lt;name&gt;Logback more appenders&lt;/name&gt;
+    &lt;url&gt;http://sndyuk.github.com/maven&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre>
+
+<h3>Configure your logback.xml</h3>
+
+<p>You can find configuration files here:</p>
+
+<ul>
+<li><a href="https://github.com/sndyuk/logback-more-appenders/blob/master/src/test/resources/logback-appenders.xml">logback-appenders.xml</a></li>
+<li><a href="https://github.com/sndyuk/logback-more-appenders/blob/master/src/test/resources/logback.xml">logback.xml</a></li>
+</ul><h2>Creating Amazon DynamoDB Table</h2>
+
+<p>If you use Amazon DynamoDB appender, You have to create table on DynamoDB:</p>
+
+<p>AWS Console -&gt; DynamoDB -&gt; Choose region -&gt; Create Table -&gt; </p>
+
+<pre><code>Table Name: [Table name described logback.xml]
+Primary Key: Hash and Range
+Hash Attribute Name: String - "instance"
+Range Attribute Name: Number - "id"
+</code></pre>
+
+<h2>License</h2>
+
+<p><a href="LICENSE">MIT LICENSE</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
