@@ -79,7 +79,7 @@ public class DataFluentAppender extends UnsynchronizedAppenderBase<ILoggingEvent
 			data.put("message", rawData.getFormattedMessage());
 			data.put("logger", rawData.getLoggerName());
 			data.put("thread", rawData.getThreadName());
-			data.put("level", rawData.getLevel());
+			data.put("level", rawData.getLevel().toInt());
 			if (rawData.getMarker() != null) {
 				data.put("marker", rawData.getMarker());
 			}
